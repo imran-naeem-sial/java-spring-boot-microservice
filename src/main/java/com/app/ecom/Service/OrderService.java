@@ -54,6 +54,7 @@ public class OrderService {
                     orderItem.setQuantity(ci.getQuantity());
                     orderItem.setPrice(ci.getPrice());
                     orderItem.setProduct(ci.getProduct());
+                    orderItem.setOrder(order);
                     return orderItem;
                 }).toList();
 
@@ -64,13 +65,13 @@ public class OrderService {
 
         List<OrderItemResponseDTO> itemResponseDTOS = orderItems.stream()
                 .map(oi -> {
-                    OrderItemResponseDTO orderItemResponseDTO = new OrderItemResponseDTO(
+                    return new OrderItemResponseDTO(
                             oi.getId(),
                             oi.getProduct().getId(),
                             oi.getQuantity(),
-                            oi.getPrice()
+                            oi.getPrice(),
+                            oi.getPrice().multiply(BigDecimal.valueOf(oi.getQuantity()))
                     );
-                    return orderItemResponseDTO;
                 }).toList();
 
         OrderResponseDTO orderResponseDTO = OrderResponseDTO.builder()
