@@ -3,6 +3,7 @@
 #spring.datasource.url=jdbc:h2:mem:test
 #spring.jpa.show-sql=true
 #spring.jpa.hibernate.ddl-auto=create
+#management.endpoints.web.exposure.include=*
 spring:
   application:
     name: ecom-application
@@ -15,3 +16,24 @@ spring:
     show-sql: true
     hibernate:
       ddl-auto: create
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
+    shutdown:
+      enabled: true
+  info:
+    env:
+      enabled: true
+server:
+  shutdown: graceful
+
+info:
+  app:
+    name: our-app
+    description: "an ecommerce application built by us"
+    version: 1.0.0

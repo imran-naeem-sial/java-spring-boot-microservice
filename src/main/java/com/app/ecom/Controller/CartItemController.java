@@ -1,7 +1,6 @@
 package com.app.ecom.Controller;
 
 import com.app.ecom.DTOs.CartItemRequest;
-import com.app.ecom.DTOs.CartItemResponse;
 import com.app.ecom.Service.CartService;
 import com.app.ecom.Utils.Response;
 import lombok.RequiredArgsConstructor;
